@@ -1,0 +1,58 @@
+# Node modules directory
+node_modules/
+
+# Environment variables file
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/Editor-specific files
+.vscode/
+.idea/
+*.swp
+
+# Build and dependency files
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Coverage reports
+coverage/
+
+# Test artifacts
+*.out
+*.log
+*.pid
+
+# Public keys and sensitive data (if any are generated)
+*.pem
+*.key
+pnpm-lock.yaml
+# ESLint configuration files
+.eslintrc
+.eslintrc.js
+.eslintrc.json
+.eslintrc.yml
+
+# Prettier configuration files
+.prettierrc
+.prettierrc.js
+.prettierrc.json
+.prettierrc.yml
+.prettierrc.toml
+
+# Optional Prettier and ESLint files
+.prettierignore
+eslintcache
