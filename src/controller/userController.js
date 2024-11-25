@@ -10,6 +10,8 @@ const registration = async (req, res) => {
   const { name, email, password } = req.body;
   console.log(name, email, password);   
   
+  console.log('Raw request body:', req.body);
+  console.log('Name:', req.body.name);
 
   try {
     // Check if the user already exists
