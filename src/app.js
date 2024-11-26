@@ -8,6 +8,8 @@ import managerRoutes from './routes/manager.js';
 import protectedRoute from './routes/protected_routes.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import cookieParser from 'cookie-parser';
+
 
 dotenv.config();
 
@@ -23,6 +25,7 @@ const parentDirectoryPath = path.join(__dirname, '..');
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+app.use(cookieParser());
 app.use(express.static(path.join(parentDirectoryPath, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

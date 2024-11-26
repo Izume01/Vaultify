@@ -60,7 +60,13 @@ const login = async (req, res) => {
       expiresIn: '24h',
     });
 
-    res.status(200).json({ token: `Bearer ${token}` });
+
+    res.cookie('jwt' , token , {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none'
+    })
+    res.redirect('/');
   } catch (error) {
     console.error('Error during login:', error);
     res.status(500).json({ message: 'Server error' });
