@@ -9,6 +9,7 @@ import protectedRoute from './routes/protected_routes.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import cookieParser from 'cookie-parser';
+import vaultRoutes from './routes/vault.js';
 
 
 dotenv.config();
@@ -48,6 +49,7 @@ app.get('/login' , (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/manager', passport.authenticate('jwt', { session: false }), managerRoutes);
 app.use('/', protectedRoute);
+app.use('/api/vault' ,vaultRoutes);
 
 // eslint-disable-next-line no-undef
 const port = process.env.PORT || 3000;
