@@ -142,3 +142,76 @@ body .search-create {
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.767);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal {
+    background-color: var(--header-background-color);
+    color: var(--text-color);
+    padding: 2rem;
+    border-radius: 0.25rem;
+    width: 30%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.modal h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal form input {
+    padding: 0.6rem 1rem;
+    border-radius: 0.6rem;
+    outline: none;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    border: 3px solid var(--light-gray);
+}
+.modal form input:focus {
+    border-color: var(--input-focus-border-color);
+}
+
+.overlay .close {
+    position: absolute;
+    top: 1.8rem;
+    right: 2.5rem;
+    border: none;
+    cursor: pointer;
+    font-size: 2.5rem;  
+    background: none;
+}
+
+.modal form button {
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@media (max-width : 768px) {
+    .modal {
+        width: 80%;
+    }
+}

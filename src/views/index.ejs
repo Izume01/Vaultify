@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
+    <div class="overlay">
+        <div class="modal">
+            <h2>Create Vault</h2>
+            <form action="/create-vault" method="POST">
+                <input type="text" name="vaultName" placeholder="Vault Name">
+                <input type="text" name="vaultType" placeholder="Vault Type">
+                <button>Create</button>
+            </form>
+            <div class="close"><ion-icon name="close-outline"></ion-icon></div>
+        </div>
+    </div>
     <header>
         <h1 class="logo">Vaulify</h1>
         <button>Logout</button>
@@ -36,5 +47,8 @@
             </div>
         </div>
     </section>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

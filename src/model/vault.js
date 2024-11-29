@@ -1,16 +1,16 @@
 import mongoose from "mongoose";
 
 const vaultSchema = new mongoose.Schema({
-    user : {
+    vault : {
         type : mongoose.Schema.Types.ObjectId, 
-        ref : 'User' , 
+        ref : 'vaultContainerModal' , 
         required : true
     },
     title : {
         type : String,
         required : true
     },
-
+    
     type: { 
         type: String, 
         enum: ['password', 'note', 'file'], 
