@@ -10,7 +10,6 @@ const vaultSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    
     type: { 
         type: String, 
         enum: ['password', 'note', 'file'], 

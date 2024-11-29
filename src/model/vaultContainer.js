@@ -9,7 +9,7 @@ const vaultContainerSchema = mongoose.Schema({
     item : {
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Vault',
-    },
+    },  
     title : {
         type : String, 
         required : true
