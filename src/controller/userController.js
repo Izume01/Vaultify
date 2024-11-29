@@ -57,14 +57,15 @@ const login = async (req, res) => {
 
     // Generate a JWT token
     const token = jwt.sign({ id: user.id }, process.env.SECRET, {
-      expiresIn: '24h',
+      expiresIn: '7d',
     });
 
 
     res.cookie('jwt' , token , {
       httpOnly: true,
       secure: true,
-      sameSite: 'none'
+      sameSite: 'none',
+      maxAge: 7 * 24 * 60 * 60 * 1000
     })
     res.redirect('/');
   } catch (error) {

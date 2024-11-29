@@ -10,6 +10,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import cookieParser from 'cookie-parser';
 import vaultRoutes from './routes/vault.js';
+import vaultContainer from './routes/vaultContainer.js'
 
 
 dotenv.config();
@@ -29,7 +30,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(cookieParser());
 app.use(express.static(path.join(parentDirectoryPath, 'public')));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 
 // Passport 
@@ -50,6 +51,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/manager', passport.authenticate('jwt', { session: false }), managerRoutes);
 app.use('/', protectedRoute);
 app.use('/api/vault' ,vaultRoutes);
+app.use('/api/container', vaultContainer); 
 
 // eslint-disable-next-line no-undef
 const port = process.env.PORT || 3000;

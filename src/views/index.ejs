@@ -10,9 +10,9 @@
     <div class="overlay">
         <div class="modal">
             <h2>Create Vault</h2>
-            <form action="/create-vault" method="POST">
-                <input type="text" name="vaultName" placeholder="Vault Name">
-                <input type="text" name="vaultType" placeholder="Vault Type">
+            <form action="/api/container/createVaultContainer" method="POST">
+                <input type="text" name="title" placeholder="title">
+                <input type="text" name="description" placeholder="description">
                 <button>Create</button>
             </form>
             <div class="close"><ion-icon name="close-outline"></ion-icon></div>

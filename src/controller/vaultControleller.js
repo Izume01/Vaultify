@@ -1,6 +1,7 @@
 import Vault from "../model/vault.js";
 import { encrypt } from "../utils/encryption.js";
 
+// We have to update this file in which the instead of the user: req.user_id it will be vault 
 export const createVault = async(req, res) => {
     try {
         const {title , type , data , metadata} = req.body;
