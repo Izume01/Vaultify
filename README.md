@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://i.postimg.cc/g2RgXn08/Screenshot-2024-11-30-023750.png" align="center" width="50%">
+    <img src="https://i.imgur.com/KmqOB0a.png" align="center" width="50%">
 </p>
 <p align="center"><h1 align="center">VAULTIFY</h1></p>
 <p align="center">
