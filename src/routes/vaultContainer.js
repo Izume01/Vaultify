@@ -44,4 +44,25 @@ router.get('/getVaultContainers', authenticateUser, async (req, res) => {
     }
 });
 
+router.delete('/deleteVaultContainer/:id' ,  authenticateUser , async(req,res) => {
+    try {
+        const {id} = req.params; 
+
+        if (!req.user || !req.user._id) {
+            return res.status(401).json({ message: 'User not authenticated' });
+        }
+
+        const vault = await vaultContainerModal.findOneAndDelete({ _id: id, user: req.user._id });
+        if (!vault) {
+            return res.status(404).json({ message: 'Vault not found' });
+        }
+        res.status(200).json({ message: 'Vault deleted successfully' });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message : error});
+    }
+})
+
+
+
 export default router;
