@@ -10,7 +10,15 @@ const getVaults = async () => {
         const data = await res.json();
         
         if (data.Vaults.length === 0) {
-            vaultContainer.innerHTML = '<h2>No Vaults Found</h2>';
+            vaultContainer.innerHTML = `
+<div class="empty-vault">
+  <h1 class="empty-message"><strong>No vaults created yet!</strong></h1>
+  <p class="sub-message">Click <strong>Create Vault</strong> to get started and organize your data securely.</p>
+  <button class="create-vault-btn"><strong>Create Vault</strong></button>
+</div>
+
+
+            `;
         } else {
             data.Vaults.forEach(vault => {
                 const dateObj = new Date(vault.createdAt);
@@ -42,7 +50,7 @@ const getVaults = async () => {
     } catch (error) {
         console.error('Get vaults error:', error);
         vaultContainer.innerHTML = '<h2 style="color: red;">Error loading vaults</h2>';
-    }
+        }
 }
 
 
