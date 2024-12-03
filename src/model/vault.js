@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
 const vaultSchema = new mongoose.Schema({
-    vault : {
+    container : {
         type : mongoose.Schema.Types.ObjectId, 
-        ref : 'vaultContainerModal' , 
+        ref : 'vaultContainer' , 
         required : true
     },
     title : {
@@ -44,7 +44,7 @@ const vaultSchema = new mongoose.Schema({
         type : Date,
         default : Date.now
     }
-}, { timestamps: true })
+})
 
 const Vault = mongoose.model('Vault', vaultSchema);
 

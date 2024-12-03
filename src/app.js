@@ -12,7 +12,6 @@ import cookieParser from 'cookie-parser';
 import vaultRoutes from './routes/vault.js';
 import vaultContainer from './routes/vaultContainer.js'
 
-
 dotenv.config();
 
 const app = express();

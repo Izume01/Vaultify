@@ -18,6 +18,14 @@ const vaultContainerSchema = mongoose.Schema({
         type : String, 
         required : true
     },
+    slug : {
+        type : String, 
+        required : true
+    },
+    vaults : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'Vault',
+    },
     createdAt : {
         type : Date, 
         default : Date.now

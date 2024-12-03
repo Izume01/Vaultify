@@ -1,6 +1,7 @@
 import vaultContainerModal from "../model/vaultContainer.js";
 import authenticateUser from '../middleware/authenticate.js';
 import express from 'express';
+import randomSlug from "../utils/slugGenerate.js";
 
 const router = express.Router(); 
 
@@ -15,11 +16,12 @@ router.post('/createVaultContainer', authenticateUser, async (req, res) => {
         if (!req.user || !req.user._id) {
             return res.status(401).json({ message: 'User not authenticated' });
         }
-
+        const slugGenerate = randomSlug;
         const newVaultContainer = new vaultContainerModal({
             user: req.user._id,
             title,
-            description
+            description,
+            slug : slugGenerate
         });
 
         await newVaultContainer.save();
@@ -86,7 +88,6 @@ router.delete('/deleteVaultContainer/:id' ,  authenticateUser , async(req,res) =
         res.status(500).json({message : error});
     }
 })
-
 
 
 export default router;
