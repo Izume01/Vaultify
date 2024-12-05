@@ -54,47 +54,55 @@ Vaultify is a secure vault management system that allows users to store and mana
 ##  Project Structure
 ```sh
 Vaultify/
-├─ eslint.config.mjs
-├─ package.json
-├─ pnpm-lock.yaml
-├─ README.md
-├─ public/
-│  ├─ css/
-│  │  ├─ index.css
-│  │  ├─ login.css
-│  │  └─ register.css
-│  └─ js/
-│     ├─ CreateVaultBtn.js
-│     └─ getVaultContainer.js
-└─ src/
-    ├─ app.js
-    ├─ config/
-    │  ├─ connectDB.js
-    │  └─ passport.js
-    ├─ controller/
-    │  ├─ managerController.js
-    │  ├─ userController.js
-    │  └─ vaultControleller.js
-    ├─ middleware/
-    │  └─ authenticate.js
-    ├─ model/
-    │  ├─ password.js
-    │  ├─ User.js
-    │  ├─ vault.js
-    │  └─ vaultContainer.js
-    ├─ routes/
-    │  ├─ auth.js
-    │  ├─ manager.js
-    │  ├─ protected_routes.js
-    │  ├─ vault.js
-    │  └─ vaultContainer.js
-    ├─ utils/
-    │  ├─ encryption.js
-    │  └─ fileEncryption.js
-    └─ views/
-        ├─ index.ejs
-        ├─ login.ejs
-        └─ register.ejs
+├── eslint.config.mjs
+├── package.json
+├── pnpm-lock.yaml
+├── README.md
+├── public/
+│   ├── css/
+│   │   ├── asfalt-light.png
+│   │   ├── container.css
+│   │   ├── index.css
+│   │   ├── login.css
+│   │   └── register.css
+│   └── js/
+│       ├── getVaultContainer.js
+│       ├── overlay.js
+│       └── vault.js
+└── src/
+    ├── app.js
+    ├── config/
+    │   ├── connectDB.js
+    │   └── passport.js
+    ├── controller/
+    │   ├── managerController.js
+    │   ├── userController.js
+    │   ├── vault.js
+    │   └── vaultControleller.js
+    ├── middleware/
+    │   └── authenticate.js
+    ├── model/
+    │   ├── password.js
+    │   ├── User.js
+    │   ├── vault.js
+    │   └── vaultContainer.js
+    ├── routes/
+    │   ├── auth.js
+    │   ├── manager.js
+    │   ├── protected_routes.js
+    │   ├── slug.js
+    │   ├── vault.js
+    │   ├── vaultContainer.js
+    │   └── vaultGen.js
+    ├── utils/
+    │   ├── encryption.js
+    │   ├── fileEncryption.js
+    │   └── slugGenerate.js
+    └── views/
+        ├── container.ejs
+        ├── index.ejs
+        ├── login.ejs
+        └── register.ejs 
 ```
 
 ###  Project Index
