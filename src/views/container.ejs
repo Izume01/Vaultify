@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vault</title>
     <link rel="stylesheet" href="/css/container.css">
 </head>
@@ -9,37 +10,33 @@
     <div class="overlay" id="overlay">
         <div class="modal">
             <h2>Add Vault Item</h2>
-            <form id="vaultForm"  method="POST">
-                <input type="hidden" name="container" value="">
+            <form id="vaultForm" method="POST">
+                <input type="hidden" name="containerId" value="<%= container._id %>">
                 <div>
                     <label for="title">Title:</label>
                     <input type="text" name="title" required>
                 </div>
                 <div>
                     <label for="type">Type:</label>
-                    <select name="type" required>
+                    <select name="type" id="typeSelect" required>
                         <option value="password">Password</option>
                         <option value="note">Note</option>
                         <option value="file">File</option>
                     </select>
                 </div>
-                <div>
-                    <label for="data">Data:</label>
-                    <input type="text" name="data" required>
+                <div id="dynamicFields">
+                    <label for="data">Password:</label>
+                    <input type="password" name="data" required>
 
-                    <!-- <textarea 
-                        id="message" 
-                        name="message" 
-                        rows="5" 
-                        maxlength="300" 
-                        placeholder="Write your message here (max 300 characters)..."></textarea>
-                    <div id="char-count">0 / 300</div> -->
-
-                    <!-- <input type="password" name="data" required> -->
-
-                    <!-- <input type="file" name="data" required> -->
+                    <div>
+                        <label class="fix" for="website">Website:</label>
+                        <input type="url" name="metadata[website]" placeholder="Enter associated website">
+                    </div>
+                    <div>
+                        <label for="username">Username:</label>
+                        <input type="text" name="metadata[username]" placeholder="Enter username">
+                    </div>
                 </div>
-                <!-- Add metadata fields as needed -->
                 <button type="submit">Create</button>
             </form>
             <button class="close" id="closeOverlay">Close</button>
@@ -47,21 +44,72 @@
     </div>
 
     <header>
-        <h1>Vaultify    </h1>
+        <h1>Vaultify</h1>
         <button id="openOverlay">Add Item</button>
     </header>
 
-    <section id="vaultItems">
+    <section id="vaultItems"></section>
 
-    </section>
-
+    <script src="/js/vault.js"></script>
     <script>
+        // Open and Close Modal
         document.getElementById('openOverlay').addEventListener('click', function() {
             document.getElementById('overlay').style.display = 'flex';
         });
 
         document.getElementById('closeOverlay').addEventListener('click', function() {
             document.getElementById('overlay').style.display = 'none';
+        });
+
+        // Dynamic Form Fields
+        const typeSelect = document.getElementById('typeSelect');
+        const dynamicFields = document.getElementById('dynamicFields');
+
+        typeSelect.addEventListener('change', function() {
+            const selectedType = typeSelect.value;
+
+            // Clear existing dynamic fields
+            dynamicFields.innerHTML = '';
+
+            if (selectedType === 'password') {
+                dynamicFields.innerHTML = `
+                    <div>
+                        <label for="data">Password:</label>
+                        <input type="password" name="data" required>
+                    </div>
+
+                    <div>
+                        <label class="fix" for="website">Website:</label>
+                        <input type="url" name="metadata[website]" placeholder="Enter associated website">
+                    </div>
+                    <div>
+                        <label for="username">Username:</label>
+                        <input type="text" name="metadata[username]" placeholder="Enter username">
+                    </div>
+                `;
+            } else if (selectedType === 'note') {
+                dynamicFields.innerHTML = `
+                    <div>
+                        <label for="data">Note:</label>
+                        <textarea name="data" rows="5" maxlength="300" placeholder="Write your note here (max 300 characters)" required></textarea>
+                    </div>
+                `;
+            } else if (selectedType === 'file') {
+                dynamicFields.innerHTML = `
+                    <div>
+                        <label for="data">File:</label>
+                        <input type="file" name="data" required>
+                    </div>
+                    <div>
+                        <label for="filename">File Name:</label>
+                        <input type="text" name="metadata[filename]" placeholder="Enter file name">
+                    </div>
+                    <div>
+                        <label for="filesize">File Size:</label>
+                        <input type="text" name="metadata[filesize]" placeholder="Enter file size">
+                    </div>
+                `;
+            }
         });
     </script>
 </body>

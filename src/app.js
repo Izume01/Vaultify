@@ -7,10 +7,13 @@ import authRoutes from './routes/auth.js';
 import managerRoutes from './routes/manager.js';
 import protectedRoute from './routes/protected_routes.js';
 import path from 'path';
+import cors from 'cors';
 import { fileURLToPath } from 'url';
 import cookieParser from 'cookie-parser';
 import vaultRoutes from './routes/vault.js';
-import vaultContainer from './routes/vaultContainer.js'
+import vaultContainer from './routes/vaultContainer.js';
+import slug from './routes/slug.js';
+import vaultGen from './routes/vaultGen.js';
 
 dotenv.config();
 
@@ -30,18 +33,18 @@ app.use(cookieParser());
 app.use(express.static(path.join(parentDirectoryPath, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(cors());
 
 // Passport 
 app.use(passport.initialize());
 configPasport(passport);
 
 // Rendering Views
-app.get('/register' , (req, res) => {
+app.get('/register', (req, res) => {
   res.render("register");
 });
 
-app.get('/login' , (req, res) => {
+app.get('/login', (req, res) => {
   res.render("login");
 });
 
@@ -49,8 +52,10 @@ app.get('/login' , (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/manager', passport.authenticate('jwt', { session: false }), managerRoutes);
 app.use('/', protectedRoute);
-app.use('/api/vault' ,vaultRoutes);
+app.use('/api/vault', vaultRoutes);
 app.use('/api/container', vaultContainer); 
+app.use('/', slug);
+app.use('/vault', vaultGen);
 
 // eslint-disable-next-line no-undef
 const port = process.env.PORT || 3000;

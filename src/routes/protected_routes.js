@@ -2,7 +2,6 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import vaultContainerModal from '../model/vaultContainer.js';
 dotenv.config();
 const router = express.Router();
 
@@ -23,27 +22,8 @@ const authenticateUser = (req, res, next) => {
       res.status(403).json({ message: 'Invalid or expired token' , error }); // Deny access
   }
 };
-
-const slug = () => {
-  router.get('/container/:slug', async (req, res) => {
-    try {
-        const { slug } = req.params; 
-        const container = await vaultContainerModal.findOne({ slug })
-        if (!container) {
-            return res.status(404).send('Container not found');
-        }
-
-        res.render('container');
-    } catch (error) {
-        console.log(error);
-        res.status(500).send('Internal Server Error');
-    }
-  });
-}
- 
 router.get('/', authenticateUser ,(req, res) => {
   res.render('index');
-  slug();
 });
 
 export default router;

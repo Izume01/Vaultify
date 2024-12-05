@@ -140,7 +140,30 @@ input[type="password"] {
     font-size: 1rem;
     transition: border-color 0.3s ease;
 }
+input[type="url"] {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid var(--light-gray);
+    border-radius: 0.5rem;
+    background-color: var(--dark-gray);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+input[type="password"]:hover {
+    border-color: var(--button-hover-color);
+}
+input[type="url"]:focus {
+    border-color: var(--input-focus-border-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(96, 165, 250, 0.5);}
 
+form .fix {
+    display: block;
+    margin-block: 0.5rem;
+    font-size: 1rem;
+}
+ 
 input[type="password"]:focus {
     border-color: var(--input-focus-border-color);
     outline: none;
@@ -183,8 +206,7 @@ textarea {
     overflow-y: auto; /* Add scroll for overflow text */
     background-color: var(--dark-gray);
     color: var(--text-color);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
 }
 textarea:focus {
     border-color: var(--input-focus-border-color);
